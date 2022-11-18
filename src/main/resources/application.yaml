@@ -1,0 +1,15 @@
+maersk-endpoints:
+  endpoints:
+    inquiry: https://maersk.com/api/bookings/checkAvailable
+
+springdoc:
+  api-docs:
+    path: /api-docs
+
+spring:
+  data:
+    cassandra:
+      keyspace-name: booking_space
+      port: 9042
+      local-datacenter: datacenter1
+      schema-action: CREATE_IF_NOT_EXISTS
