@@ -1,10 +1,11 @@
-package com.mytest.maersk.gen;
+package com.mytest.maersk.helper;
 
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 /*
  * Helper class to make service call

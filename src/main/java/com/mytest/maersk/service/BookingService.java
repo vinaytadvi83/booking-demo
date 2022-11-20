@@ -1,6 +1,6 @@
 package com.mytest.maersk.service;
 
-import com.mytest.maersk.gen.ServiceHelper;
+import com.mytest.maersk.helper.ServiceHelper;
 import com.mytest.maersk.model.Booking;
 import com.mytest.maersk.repository.BookingRepository;
 import net.minidev.json.JSONObject;
@@ -21,17 +21,21 @@ public class BookingService {
     ServiceHelper serviceHelper;
 
     public boolean isBookingAvailable(Booking booking) {
-        //JSONObject jsonObject = (JSONObject) serviceHelper.callService("maersk-endpoints.endpoints.inquiry");
-        //int availableSpace = (Integer)jsonObject.get("availableSpace");
-        //if (availableSpace == 0 || availableSpace < booking.getQuantity()) return false;
-        //else return true;
-        return true;
+        JSONObject jsonObject = (JSONObject) serviceHelper.callService("maersk-endpoints.endpoints.inquiry");
+        int availableSpace = (Integer)jsonObject.get("availableSpace");
+        return availableSpace != 0 && availableSpace >= booking.getQuantity();
     }
 
     public Integer createBooking(Booking booking) {
-        booking.setId(sequenceService.bookingSequenceNextVal());
-        bookingRepository.save(booking).subscribe();
-        return Integer.valueOf(booking.getId().toString());
+        Booking newBooking = new Booking(sequenceService.bookingSequenceNextVal(),
+                booking.getContainerSize(),
+                booking.getContainerType(),
+                booking.getOrigin(),
+                booking.getDestination(),
+                booking.getQuantity(),
+                booking.getTimestamp());
+        bookingRepository.save(newBooking).subscribe();
+        return Integer.valueOf(newBooking.getId().toString());
     }
 
     public Flux<Booking> findAll() {

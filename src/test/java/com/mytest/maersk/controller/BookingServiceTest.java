@@ -1,6 +1,6 @@
 package com.mytest.maersk.controller;
 
-import com.mytest.maersk.gen.ServiceHelper;
+import com.mytest.maersk.helper.ServiceHelper;
 import com.mytest.maersk.model.Booking;
 import com.mytest.maersk.model.ContainerType;
 import com.mytest.maersk.service.BookingService;
@@ -9,14 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;

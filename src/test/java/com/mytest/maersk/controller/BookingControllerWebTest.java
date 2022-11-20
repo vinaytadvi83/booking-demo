@@ -2,7 +2,7 @@ package com.mytest.maersk.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.mytest.maersk.gen.ServiceHelper;
+import com.mytest.maersk.helper.ServiceHelper;
 import com.mytest.maersk.model.Booking;
 import com.mytest.maersk.model.ContainerType;
 import com.mytest.maersk.repository.BookingRepository;
@@ -24,7 +24,6 @@ import java.util.Map;
 
 import static com.mytest.maersk.result.matcher.ResponseBodyMatchers.responseBody;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 @ExtendWith(MockitoExtension.class)

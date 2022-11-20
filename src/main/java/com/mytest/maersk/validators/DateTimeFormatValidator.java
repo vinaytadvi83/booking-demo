@@ -7,10 +7,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class DateTimeFormatValidator
-        implements ConstraintValidator<NumberFrom, String> {
+        implements ConstraintValidator<ValidDateTimeFormat, String> {
+
+    public static String ISO_8601BASIC_DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        DateFormat sdf = new SimpleDateFormat("YYYY-MM-DD'T'hh:mm:ss'Z'");
+        DateFormat sdf = new SimpleDateFormat(ISO_8601BASIC_DATE_PATTERN);
         sdf.setLenient(false);
         try {
             sdf.parse(value);

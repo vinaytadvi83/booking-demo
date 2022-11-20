@@ -1,22 +1,14 @@
 package com.mytest.maersk.controller;
 
 import com.mytest.maersk.model.Booking;
-import com.mytest.maersk.model.BookingSequence;
 import com.mytest.maersk.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import reactor.core.publisher.Flux;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
 
 @RestController
 public class BookingController {

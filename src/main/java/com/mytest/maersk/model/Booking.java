@@ -1,10 +1,13 @@
 package com.mytest.maersk.model;
 
+import com.mytest.maersk.validators.ContainerTypes;
 import com.mytest.maersk.validators.NumberFrom;
 import com.mytest.maersk.validators.ValidDateTimeFormat;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Table
@@ -13,17 +16,24 @@ public class Booking {
     @PrimaryKey
     private Long id;
 
-    @NumberFrom
+    @NumberFrom(values = {20, 40}, message = "Container size can be 20 or 40!")
     private Integer containerSize;
+
+    @ContainerTypes(anyOf = {ContainerType.DRY, ContainerType.REEFER}, message = "Containers types DRY or REEFRE allowed!")
     private ContainerType containerType;
-    @Size(min = 5, max = 20)
+
+    @NotBlank
+    @Size(min = 5, max = 20, message = "Origin name should be between 5 and 20 characters!")
     private String origin;
-    @Size(min = 5, max = 20)
+
+    @NotBlank
+    @Size(min = 5, max = 20, message = "Destination name should be between 5 and 20 characters!")
     private String destination;
+
+    @Range(min=1, max=100, message = "The Booking quantity should be between 1 and 100!")
     private Integer quantity;
 
-    //@JsonFormat( shape = JsonFormat.Shape.STRING , pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ" )
-    @ValidDateTimeFormat
+    @ValidDateTimeFormat (message = "Date format should be in ISO-8601 date and time for UTC timezone e.g. 2020-10-12T13:53:09Z")
     private String timestamp;
 
     public Booking(){}
@@ -40,10 +50,6 @@ public class Booking {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Integer getContainerSize() {

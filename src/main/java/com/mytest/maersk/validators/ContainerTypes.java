@@ -1,5 +1,7 @@
 package com.mytest.maersk.validators;
 
+import com.mytest.maersk.model.ContainerType;
+
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.ElementType;
@@ -9,11 +11,12 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = NumberFromValidator.class)
-public @interface NumberFrom {
+@Constraint(validatedBy = ContainerTypeValidator.class)
+public @interface ContainerTypes {
 
-    int [] values();
-    String message() default "Provided numbers not allowed!" ;
+    String message() default "Provided values not allowed!" ;
+
+    ContainerType [] anyOf();
 
     Class<?>[] groups() default {};
 
