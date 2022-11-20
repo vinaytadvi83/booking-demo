@@ -1,4 +1,4 @@
-package com.mytest.maersk.validators;
+package com.mytest.maersk.validator;
 
 import com.mytest.maersk.model.ContainerType;
 
@@ -6,6 +6,9 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.Arrays;
 
+/*
+ * Validate if Enum values provided are allowed
+ */
 public class ContainerTypeValidator
         implements ConstraintValidator<ContainerTypes, ContainerType> {
 

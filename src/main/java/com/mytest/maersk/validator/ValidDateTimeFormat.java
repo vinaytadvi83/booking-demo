@@ -1,4 +1,4 @@
-package com.mytest.maersk.validators;
+package com.mytest.maersk.validator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,11 +9,9 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = NumberFromValidator.class)
-public @interface NumberFrom {
-
-    int [] values();
-    String message() default "Provided numbers not allowed!" ;
+@Constraint(validatedBy = DateTimeFormatValidator.class)
+public @interface ValidDateTimeFormat {
+    String message() default "Date Format is not valid.";
 
     Class<?>[] groups() default {};
 

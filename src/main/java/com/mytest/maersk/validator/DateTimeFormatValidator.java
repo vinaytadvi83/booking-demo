@@ -1,4 +1,4 @@
-package com.mytest.maersk.validators;
+package com.mytest.maersk.validator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -6,6 +6,10 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+/*
+ * Validate If allowed Date format is supplied
+ * Allowed format is ISO-8601 date and time for UTC timezone
+ */
 public class DateTimeFormatValidator
         implements ConstraintValidator<ValidDateTimeFormat, String> {
 

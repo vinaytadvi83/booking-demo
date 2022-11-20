@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 /*
- * Helper class to make service call
+ * Helper class to prepare and make external service call
  * */
 @Component
 public class ServiceHelper {

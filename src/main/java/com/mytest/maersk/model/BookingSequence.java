@@ -9,6 +9,11 @@ import java.util.UUID;
 
 import static org.springframework.data.cassandra.core.mapping.CassandraType.Name.COUNTER;
 
+/*
+ * Booking sequence used for custom sequence starting from 957000001 as requirement
+ * This entity uses counter table feature of Cassandra
+ * However it is good not to use sequence in distributed database, recommendation is to use UUID
+ */
 @Table
 public class BookingSequence {
 

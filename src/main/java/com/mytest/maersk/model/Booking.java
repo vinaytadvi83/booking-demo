@@ -1,8 +1,8 @@
 package com.mytest.maersk.model;
 
-import com.mytest.maersk.validators.ContainerTypes;
-import com.mytest.maersk.validators.NumberFrom;
-import com.mytest.maersk.validators.ValidDateTimeFormat;
+import com.mytest.maersk.validator.ContainerTypes;
+import com.mytest.maersk.validator.NumberFrom;
+import com.mytest.maersk.validator.ValidDateTimeFormat;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;

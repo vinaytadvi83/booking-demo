@@ -5,10 +5,11 @@ import com.mytest.maersk.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
-
 
 @RestController
 public class BookingController {
@@ -36,9 +37,9 @@ public class BookingController {
     }
 
     @PostMapping("/api/bookings/createBooking")
-    public Map<String, Integer> createBooking(@Valid @RequestBody Booking booking) {
-        HashMap<String, Integer> result = new HashMap<>();
-        Integer id = bookingService.createBooking(booking);
+    public Map<String, Long> createBooking(@Valid @RequestBody Booking booking) {
+        HashMap<String, Long> result = new HashMap<>();
+        Long id = bookingService.createBooking(booking).block().getId();
         result.put("bookingRef", id);
         return result;
     }
@@ -48,9 +49,12 @@ public class BookingController {
         return bookingService.findAll();
     }
 
+    @GetMapping("/api/bookings/findById/{id}")
+    public Mono<Booking> findById(@PathVariable Long id) {return bookingService.findById(id); };
+
     @DeleteMapping("/api/bookings/delete")
-    public void delete(@Valid @RequestBody Booking booking){
-        bookingService.delete(booking);
+    public Boolean delete(@Valid @RequestBody Booking booking){
+        return bookingService.delete(booking);
     }
 
 }

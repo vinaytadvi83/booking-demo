@@ -1,4 +1,4 @@
-package com.mytest.maersk.validators;
+package com.mytest.maersk.validator;
 
 import com.mytest.maersk.model.ContainerType;
 

@@ -1,5 +1,6 @@
 package com.mytest.maersk.controller;
 
+import com.mytest.maersk.BookingApplication;
 import com.mytest.maersk.helper.ServiceHelper;
 import com.mytest.maersk.model.Booking;
 import com.mytest.maersk.model.ContainerType;
@@ -7,9 +8,15 @@ import com.mytest.maersk.service.BookingService;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,12 +24,13 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
+//@ExtendWith(MockitoExtension.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class BookingServiceTest {
 
-    @Mock
-    ServiceHelper serviceHelper; //= Mockito.mock(ServiceHelper.class);
-    @InjectMocks
+    @MockBean
+    ServiceHelper serviceHelper;
+    @Autowired
     BookingService bookingService;
 
     @Test
@@ -44,4 +52,5 @@ public class BookingServiceTest {
         boolean result = bookingService.isBookingAvailable(new Booking(123456789L, 20, ContainerType.REEFER, "London", "Dovar", 6, "2020-10-12T13:53:09Z"));
         assertThat(result).isEqualTo(true);
     }
+
 }
