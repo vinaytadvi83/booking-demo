@@ -1,3 +1,6 @@
+server:
+  port: 5474
+
 maersk-endpoints:
   endpoints:
     inquiry: https://maersk.com/api/bookings/checkAvailable

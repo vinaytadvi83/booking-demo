@@ -6,6 +6,10 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+/*
+ * Initializing Booking Sequence when application starts if not already done
+ */
+
 @Component
 public class BookingApplicationConfig implements ApplicationRunner {
 

@@ -16,6 +16,10 @@ import org.springframework.data.cassandra.repository.config.EnableCassandraRepos
 
 import java.util.List;
 
+/*
+ * Override some cassandra settings to create KeySpace and Tables if not already done
+ */
+
 @Configuration
 @EnableCassandraRepositories(basePackages = "com.maersk.booking.model")
 public class CassandraConfig extends AbstractCassandraConfiguration {
